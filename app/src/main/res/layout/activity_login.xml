@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/driving"
+    tools:context=".LoginActivity">
+
+    <ImageButton
+        android:id="@+id/lg_kakao_btn"
+        android:layout_width="290dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/kakao_login_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="472dp" />
+
+
+    <ImageButton
+        android:id="@+id/btn_facebook_login"
+        android:layout_width="290dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/facebook_login_btn"
+        app:layout_constraintBottom_toTopOf="@+id/lg_naver_btn"
+        app:layout_constraintEnd_toEndOf="@+id/lg_kakao_btn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/lg_kakao_btn"
+        app:layout_constraintTop_toBottomOf="@+id/lg_kakao_btn" />
+
+    <TextView
+        android:id="@+id/lg_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Safe Recorder"
+        android:textColor="#0000ff"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="300dp" />
+
+    <TextView
+        android:id="@+id/lg_nonlg_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="right"
+        android:text="비회원 로그인"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lg_naver_btn" />
+
+    <ImageButton
+        android:id="@+id/lg_naver_btn"
+        android:layout_width="290dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/naver_login_btn"
+        app:layout_constraintEnd_toEndOf="@+id/btn_facebook_login"
+        app:layout_constraintStart_toStartOf="@+id/btn_facebook_login"
+        app:layout_constraintTop_toBottomOf="@+id/btn_facebook_login" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
