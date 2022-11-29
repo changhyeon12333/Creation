@@ -10,10 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeRecorder">
         <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.SafeRecorder.NoActionBar" />
+        <activity
             android:name=".ServiceActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".OpenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
