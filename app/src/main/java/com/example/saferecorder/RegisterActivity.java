@@ -38,5 +38,20 @@ public class RegisterActivity extends AppCompatActivity {
         et_passck=findViewById(R.id.et_passck);
         validateButton=findViewById(R.id.validateButton);
         validateButton.setOnClickListener(new View.OnClickListener() {//id중복체크
+            @Override
+            public void onClick(View view) {
+                String userID=et_id.getText().toString();
+                if(validate)
+                {
+                    return;
+                }
+                if(userID.equals("")){
+                    AlertDialog.Builder builder=new AlertDialog.Builder( RegisterActivity.this );
+                    dialog=builder.setMessage("아이디는 빈 칸일 수 없습니다")
+                            .setPositiveButton("확인",null)
+                            .create();
+                    dialog.show();
+                    return;
+                }
     }
 }
