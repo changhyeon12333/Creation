@@ -28,5 +28,15 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        //아이디 값 찾아주기
+        et_id=findViewById(R.id.et_id);
+        et_pass=findViewById(R.id.et_pass);
+        et_name=findViewById(R.id.et_name);
+        et_age=findViewById(R.id.et_age);
+        et_hak=findViewById(R.id.et_hak);
+        et_major=findViewById(R.id.et_maj);
+        et_passck=findViewById(R.id.et_passck);
+        validateButton=findViewById(R.id.validateButton);
+        validateButton.setOnClickListener(new View.OnClickListener() {//id중복체크
     }
 }
