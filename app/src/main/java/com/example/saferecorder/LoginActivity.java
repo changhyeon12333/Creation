@@ -37,6 +37,12 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String userID=et_id.getText().toString();
+                String userPass=et_pass.getText().toString();
 
+                Response.Listener<String> responseListener=new Response.Listener<String>()
     }
 }
