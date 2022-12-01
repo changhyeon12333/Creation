@@ -53,13 +53,28 @@ public class LoginActivity extends AppCompatActivity {
                                 String userID = jasonObject.getString("userID");
                                 String userPass = jasonObject.getString("userPassword");
                                 Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, ServiceActivity.class);
                                 intent.putExtra("log", "User");
                                 intent.putExtra("userID", userID);
                                 startActivity(intent);
                             }
+                            else{//회원등록 실패한 경우
+                                Toast.makeText(getApplicationContext(), "로그인 실패", Toast.LENGTH_SHORT).show();
+                                return;
 
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                LoginRequest loginRequest=new LoginRequest(userID,userPass,responseListener);
+                RequestQueue queue= Volley.newRequestQueue(LoginActivity.this);
+                queue.add(loginRequest);
             }
+        });
+
+
 
     }
 }
