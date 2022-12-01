@@ -8,4 +8,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterRequest extends StringRequest {
+    //서버 url 설정(php파일 연동)
+    final static  private String URL="http://cpcp1245.dothome.co.kr/Register2.php";
+    private Map<String,String>map;
+
+    public RegisterRequest(String userID, String userPassword, String userName, int userAge,int userHak,String userMajor,Response.Listener<String>listener){
+        super(Method.POST,URL,listener,null);//위 url에 post방식으로 값을 전송
+
+
 }
