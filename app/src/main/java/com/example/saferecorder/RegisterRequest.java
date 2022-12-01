@@ -14,6 +14,17 @@ public class RegisterRequest extends StringRequest {
 
     public RegisterRequest(String userID, String userPassword, String userName, int userAge,int userHak,String userMajor,Response.Listener<String>listener){
         super(Method.POST,URL,listener,null);//위 url에 post방식으로 값을 전송
-
+        map=new HashMap<>();
+        map.put("userID",userID);
+        map.put("userPassword",userPassword);
+        map.put("userName",userName);
+        map.put("userAge",userAge+"");
+        map.put("userHak",userHak+"");
+        map.put("userMajor",userMajor);
+    }
+    @Override
+    protected Map<String, String> getParams() throws AuthFailureError {
+        return map;
+    }
 
 }
