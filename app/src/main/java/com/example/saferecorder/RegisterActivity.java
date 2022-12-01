@@ -114,6 +114,21 @@ public class RegisterActivity extends AppCompatActivity {
                                     startActivity(intent);
                                 }
                             }
+                            else{//회원등록 실패한 경우
+                                Toast.makeText(getApplicationContext(),"회원 등록 실패",Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                //서버로 volley를 이용해서 요청을 함
+                RegisterRequest registerRequest=new RegisterRequest(userID,userPass, userName, userAge,userHak,userMajor,responseListener);
+                RequestQueue queue= Volley.newRequestQueue(RegisterActivity.this);
+                queue.add(registerRequest);
+            }
+        });
 
     }
 }
