@@ -101,5 +101,19 @@ public class RegisterActivity extends AppCompatActivity {
                 String userMajor=et_major.getText().toString();
                 final String PassCk=et_passck.getText().toString();
 
+                Response.Listener<String> responseListener=new Response.Listener<String>() {//volley
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jasonObject=new JSONObject(response);//Register2 php에 response
+                            boolean success=jasonObject.getBoolean("success");//Register2 php에 sucess
+                            if(userPass.equals(PassCk)) {
+                                if (success) {//회원등록 성공한 경우
+                                    Toast.makeText(getApplicationContext(), "회원 등록 성공", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                    startActivity(intent);
+                                }
+                            }
+
     }
 }
