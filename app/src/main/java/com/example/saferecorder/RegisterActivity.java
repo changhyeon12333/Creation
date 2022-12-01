@@ -69,5 +69,37 @@ public class RegisterActivity extends AppCompatActivity {
                                 validate=true;
                                 validateButton.setText("확인");
                             }
+                            else{
+                                AlertDialog.Builder builder=new AlertDialog.Builder( RegisterActivity.this );
+                                dialog=builder.setMessage("사용할 수 없는 아이디입니다.")
+                                        .setNegativeButton("확인",null)
+                                        .create();
+                                dialog.show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                ValidateRequest validateRequest=new ValidateRequest(userID,responseListener);
+                RequestQueue queue= Volley.newRequestQueue(RegisterActivity.this);
+                queue.add(validateRequest);
+
+            }
+        });
+
+        btn_register=findViewById(R.id.btn_register);
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //editText에 입력되어있는 값을 get(가져온다)해온다
+                String userID=et_id.getText().toString();
+                final String userPass=et_pass.getText().toString();
+                String userName=et_name.getText().toString();
+                int userAge=Integer.parseInt(et_age.getText().toString());
+                int userHak=Integer.parseInt(et_hak.getText().toString());
+                String userMajor=et_major.getText().toString();
+                final String PassCk=et_passck.getText().toString();
+
     }
 }
