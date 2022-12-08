@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,12 +20,16 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-public class ServiceActivity extends AppCompatActivity {
-    Button btnBluetoothOn;
-    Button btnBluetoothOff;
+import java.util.ArrayList;
 
-    TextView tvBluetoothStatus;
+public class ServiceActivity extends AppCompatActivity {
     BluetoothAdapter mBluetoothAdapter;
+
+    Button btnDiscover;
+    public ArrayList<BluetoothDevice> mBTdevices;
+    public DeviceListAdapter mDeviceListAdapter;
+    ListView newDevicesList;
+    Button btnFindDiscover;
 
     final static int BT_REQUEST_ENABLE = 1;
     final static int BT_MESSAGE_READ = 2;
