@@ -80,7 +80,16 @@ public class ServiceActivity extends AppCompatActivity {
     private final BroadcastReceiver mBroadCastReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
+            if (action.equals(mBluetoothAdapter.ACTION_STATE_CHANGED)) {
+                final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, mBluetoothAdapter.ERROR);
+                switch (state) {
+                    case BluetoothAdapter.STATE_ON:
+                        Toast.makeText(getApplicationContext(), "Bluetooth On", Toast.LENGTH_SHORT).show();
+                        tvBluetoothStatus.setText("Active");
+                        break;
 
+                }
+            }//end if
         }//end onReceive
     };
 
