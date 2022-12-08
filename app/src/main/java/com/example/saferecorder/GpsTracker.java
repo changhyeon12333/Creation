@@ -95,8 +95,18 @@ public class GpsTracker extends Service implements LocationListener {
         }
 
         return location;
-
     }
+
+
+    public double getLatitude() {
+        if(location != null)
+        {
+            latitude = location.getLatitude();
+        }
+        return latitude;
+    }
+
+
     public IBinder onBind(Intent intent) {
         return null;
     }
