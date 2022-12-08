@@ -76,6 +76,7 @@ public class ServiceActivity extends AppCompatActivity {
         tvBluetoothStatus = findViewById(R.id.tvBluetoothStatus);
         btnConnect = findViewById(R.id.btnConnect);
         btnDiscover = findViewById(R.id.btnDiscover);
+        btnSendData = findViewById(R.id.btnSendData);
         btnFindDiscover = findViewById(R.id.btnFindDiscover);
         newDevicesList = (ListView) findViewById(R.id.newDevicesList);
         mBTdevices = new ArrayList<>();
@@ -111,6 +112,14 @@ public class ServiceActivity extends AppCompatActivity {
                 bluetoothDiscover();
             }
         });
+
+        btnSendData.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                make_php();
+            }
+        });
+
 
     }
 
