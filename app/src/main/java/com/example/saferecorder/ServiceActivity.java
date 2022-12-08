@@ -111,6 +111,23 @@ public class ServiceActivity extends AppCompatActivity {
             if (action.equals(mBluetoothAdapter.ACTION_STATE_CHANGED)) {
                 final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, mBluetoothAdapter.ERROR);
 
+                switch (state) {
+                    case BluetoothAdapter.STATE_ON:
+                        Toast.makeText(getApplicationContext(), "Bluetooth On", Toast.LENGTH_SHORT).show();
+                        tvBluetoothStatus.setText("Active");
+                        break;
+                    case BluetoothAdapter.STATE_OFF:
+                        Toast.makeText(getApplicationContext(), "Bluetooth Off", Toast.LENGTH_SHORT).show();
+                        tvBluetoothStatus.setText("NonActive");
+                        break;
+                    case BluetoothAdapter.STATE_TURNING_ON:
+                        Toast.makeText(getApplicationContext(), "Bluetooth turning On", Toast.LENGTH_SHORT).show();
+                        break;
+                    case BluetoothAdapter.STATE_TURNING_OFF:
+                        Toast.makeText(getApplicationContext(), "Bluetooth turning Off", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }//end if
 
 
         }//end onReceive
