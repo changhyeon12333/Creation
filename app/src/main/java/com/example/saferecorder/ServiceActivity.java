@@ -148,7 +148,15 @@ public class ServiceActivity extends AppCompatActivity {
             registerReceiver(mBroadCastReceiver,discoverDevicesIntent);
         }
 
+        else if(!mBluetoothAdapter.isDiscovering()){
+            checkBTPermissions();
+            Toast.makeText(getApplicationContext(), "Starting discovery", Toast.LENGTH_SHORT).show();
 
+            mBluetoothAdapter.startDiscovery();
+            IntentFilter discoverDevicesIntent = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+            registerReceiver(mBroadCastReceiver,discoverDevicesIntent);
+
+        }
     }
 
 
