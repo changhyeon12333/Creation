@@ -129,6 +129,29 @@ public class ServiceActivity extends AppCompatActivity {
                 }
             }//end if
 
+            else if (action.equals(mBluetoothAdapter.ACTION_SCAN_MODE_CHANGED)) {
+                final int mode = intent.getIntExtra(BluetoothAdapter.EXTRA_SCAN_MODE, BluetoothAdapter.ERROR);
+
+                switch (mode) {
+                    case BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE:
+                        Toast.makeText(getApplicationContext(), "Discoverability enabled", Toast.LENGTH_SHORT).show();
+                        break;
+                    case BluetoothAdapter.SCAN_MODE_CONNECTABLE:
+                        Toast.makeText(getApplicationContext(), "Discoverability Disabled. Able to receive connections", Toast.LENGTH_SHORT).show();
+                        break;
+                    case BluetoothAdapter.SCAN_MODE_NONE:
+                        Toast.makeText(getApplicationContext(), "Discoverability Disabled. Not able to receive connections", Toast.LENGTH_SHORT).show();
+                        break;
+                    case BluetoothAdapter.STATE_CONNECTING:
+                        Toast.makeText(getApplicationContext(), "Connecting...", Toast.LENGTH_SHORT).show();
+                        break;
+                    case BluetoothAdapter.STATE_CONNECTED:
+                        Toast.makeText(getApplicationContext(), "Connected.",Toast.LENGTH_SHORT).show();
+                        break;
+
+                }
+            }//end else if
+
 
         }//end onReceive
     };
