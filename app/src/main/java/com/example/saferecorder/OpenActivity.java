@@ -15,24 +15,42 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import android.widget.TextView;
+import com.kakao.sdk.auth.model.OAuthToken;
+import com.kakao.sdk.user.UserApiClient;
+import com.kakao.sdk.user.model.User;
 
 import java.security.MessageDigest;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function2;
+import java.util.Arrays;
 
 
 public class OpenActivity extends AppCompatActivity {
 
+    private View btn_kakao_login;
+    private View btn_saferecorder_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open);
-        @SuppressLint("WrongViewCast") Button button = findViewById(R.id.lg_saferecorder_btn);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        btn_kakao_login = findViewById(R.id.lg_kakao_btn);
+        btn_saferecorder_login = findViewById(R.id.lg_saferecorder_btn);
+
+        // saferecorder 로그인 버튼 클릭시 로그인 페이지로 이동
+        btn_saferecorder_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(OpenActivity.this, LoginActivity.class);
+                Intent intent =  new Intent(OpenActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
+
+
+
+
     }
+
 }
