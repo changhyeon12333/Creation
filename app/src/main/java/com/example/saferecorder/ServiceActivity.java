@@ -1,5 +1,9 @@
 package com.example.saferecorder;
+
 import android.bluetooth.BluetoothAdapter;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 public class ServiceActivity extends AppCompatActivity {
     Button btnBluetoothOn;
@@ -43,18 +48,25 @@ public class ServiceActivity extends AppCompatActivity {
                 blueToothOff();
             }
         });
-        
-        }
+
+    }
 
     private void blueToothOff() {
     }
 
-    private void blueToothOn() {
+    public void blueToothOn() {
         if (mBluetoothAdapter == null) {
             Toast.makeText(getApplicationContext(), "This device doesn't support bluetooth service", Toast.LENGTH_SHORT).show();
             tvBluetoothStatus.setText("NonActive");
         } else if (mBluetoothAdapter.isEnabled()) {
             Toast.makeText(getApplicationContext(), "Already On", Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intentBluetoothEnable = new Intent(mBluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(intentBluetoothEnable, BT_REQUEST_ENABLE);//BT_REQUEST_ENABLE : ModeId
+
+            IntentFilter BTIntent = new IntentFilter(mBluetoothAdapter.ACTION_STATE_CHANGED);
+            registerReceiver(mBroadCastReceiver, BTIntent);
+
         }
     }
 }
