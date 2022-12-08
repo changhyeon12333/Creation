@@ -19,6 +19,15 @@ public class ServiceActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_service);
+
+        //initialize
+        btnBluetoothOn = findViewById(R.id.btnBluetoothOn);
+        btnBluetoothOff = findViewById(R.id.btnBluetoothOff);
+        tvBluetoothStatus = findViewById(R.id.tvBluetoothStatus);
+
+        //get Defualt of blooth adapter
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         }
     }
