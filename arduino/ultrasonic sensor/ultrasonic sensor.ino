@@ -1,13 +1,19 @@
 #include <SoftwareSerial.h>
 const int tx =2;
+<<<<<<< HEAD
 const int rx =3;
 SoftwareSerial HM10 (tx,rx);
 
 const int trig_0 = 7;
+=======
+const int rx= 3;
+const int trig_0 = 9;
+>>>>>>> Feature_Arduino_Sensor
 const int echo_0 = 8;
 const int trig_1 =11;
 const int echo_1=12;
 
+SoftwareSerial HM10 (tx,rx);
 
 void setup() {
   pinMode(trig_0,OUTPUT);
@@ -19,14 +25,18 @@ void setup() {
 }
 
 void loop() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> Feature_Arduino_Sensor
 
   //신호발생
   digitalWrite(trig_0, LOW);
   digitalWrite(trig_1, LOW);
-  delayMicroseconds(100);
+  delayMicroseconds(10);
   digitalWrite(trig_0,HIGH);
   digitalWrite(trig_1,HIGH);
-  delayMicroseconds(100);
+  delayMicroseconds(10);
   digitalWrite(trig_0,LOW);
   digitalWrite(trig_1,LOW);
 
@@ -46,7 +56,21 @@ void loop() {
     Serial.write(data);
   }
 
+<<<<<<< HEAD
   HM10.write(distance_0); 
   HM10.write(distance_1);
+=======
+  if(HM10.available()){
+    byte data = HM10.read();
+    Serial.write(data);
+  }
+  if(Serial.available()){
+    HM10.write("br");
+    HM10.println(distance_0);
+    HM10.write("ac");
+    HM10.println(distance_1);
+  }
+
+>>>>>>> Feature_Arduino_Sensor
 
 }
