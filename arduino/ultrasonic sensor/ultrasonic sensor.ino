@@ -1,7 +1,14 @@
 #include <SoftwareSerial.h>
 const int tx =2;
+<<<<<<< HEAD
+const int rx =3;
+SoftwareSerial HM10 (tx,rx);
+
+const int trig_0 = 7;
+=======
 const int rx= 3;
 const int trig_0 = 9;
+>>>>>>> Feature_Arduino_Sensor
 const int echo_0 = 8;
 const int trig_1 =11;
 const int echo_1=12;
@@ -15,11 +22,13 @@ void setup() {
   pinMode(trig_1,INPUT);
   Serial.begin(9600);
   HM10.begin(9600);
-
 }
 
 void loop() {
+<<<<<<< HEAD
+=======
 
+>>>>>>> Feature_Arduino_Sensor
 
   //신호발생
   digitalWrite(trig_0, LOW);
@@ -31,7 +40,7 @@ void loop() {
   digitalWrite(trig_0,LOW);
   digitalWrite(trig_1,LOW);
 
-  //신호입력
+//   //신호입력
   long Length_0 = pulseIn(echo_0, HIGH);
   long distance_0 = (Length_0/2) /29.1;
   long Length_1 = pulseIn(echo_1, HIGH);
@@ -41,7 +50,16 @@ void loop() {
   Serial.println(distance_0);
   Serial.print("sensor_1 :");
   Serial.println(distance_1);
+    //Bluth
+  if (HM10.available()){ 
+    byte data = HM10.read();
+    Serial.write(data);
+  }
 
+<<<<<<< HEAD
+  HM10.write(distance_0); 
+  HM10.write(distance_1);
+=======
   if(HM10.available()){
     byte data = HM10.read();
     Serial.write(data);
@@ -53,5 +71,6 @@ void loop() {
     HM10.println(distance_1);
   }
 
+>>>>>>> Feature_Arduino_Sensor
 
 }
