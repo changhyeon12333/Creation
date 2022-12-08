@@ -26,6 +26,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.saferecorder.R;
+
 import org.w3c.dom.Text;
 
 import java.io.IOException;
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_service);
 
         //initialize
         btnBluetoothOn = findViewById(R.id.btnBluetoothOn);
