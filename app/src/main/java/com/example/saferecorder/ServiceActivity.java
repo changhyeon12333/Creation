@@ -23,6 +23,12 @@ import androidx.core.app.ActivityCompat;
 import java.util.ArrayList;
 
 public class ServiceActivity extends AppCompatActivity {
+    Button btnBluetoothOn;
+    Button btnBluetoothOff;
+
+    TextView tvBluetoothStatus;
+    Button btnConnect;
+
     BluetoothAdapter mBluetoothAdapter;
 
     Button btnDiscover;
@@ -31,6 +37,7 @@ public class ServiceActivity extends AppCompatActivity {
     ListView newDevicesList;
     Button btnFindDiscover;
 
+    //Mode
     final static int BT_REQUEST_ENABLE = 1;
     final static int BT_MESSAGE_READ = 2;
     final static int BT_CONNECTING_STATUS = 3;
@@ -44,17 +51,18 @@ public class ServiceActivity extends AppCompatActivity {
         btnBluetoothOn = findViewById(R.id.btnBluetoothOn);
         btnBluetoothOff = findViewById(R.id.btnBluetoothOff);
         tvBluetoothStatus = findViewById(R.id.tvBluetoothStatus);
+        btnConnect = findViewById(R.id.btnConnect);
+        btnDiscover = findViewById(R.id.btnDiscover);
+        btnFindDiscover = findViewById(R.id.btnFindDiscover);
+        newDevicesList = (ListView) findViewById(R.id.newDevicesList);
+        mBTdevices = new ArrayList<>();
 
-        btnFindDiscover.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bluetoothDiscover();
-            }
-        });
 
 
         //get Defualt of blooth adapter
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+
         btnBluetoothOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,6 +73,12 @@ public class ServiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 blueToothOff();
+            }
+        });
+        btnDiscover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bluetoothDiscovery();
             }
         });
 
@@ -196,4 +210,3 @@ public class ServiceActivity extends AppCompatActivity {
 
 
 
-}
