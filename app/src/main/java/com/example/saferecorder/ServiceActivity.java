@@ -45,6 +45,10 @@ import java.util.UUID;
 //4. Send data
 
 public class ServiceActivity extends AppCompatActivity {
+    private static String IP_ADDRESS = "http://dtp06077.dothome.co.kr/Login2.php"; //IP주소
+    private static String ACELL = "ACELL"; //ACELL
+    private static String BREAK = "BREAK"; //BREAK
+
     Button btnBluetoothOn;
     Button btnBluetoothOff;
 
@@ -76,7 +80,6 @@ public class ServiceActivity extends AppCompatActivity {
         tvBluetoothStatus = findViewById(R.id.tvBluetoothStatus);
         btnConnect = findViewById(R.id.btnConnect);
         btnDiscover = findViewById(R.id.btnDiscover);
-        btnSendData = findViewById(R.id.btnSendData);
         btnFindDiscover = findViewById(R.id.btnFindDiscover);
         newDevicesList = (ListView) findViewById(R.id.newDevicesList);
         mBTdevices = new ArrayList<>();
