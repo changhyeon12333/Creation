@@ -76,9 +76,27 @@ public class OpenActivity extends AppCompatActivity {
             }
         });
 
-
-
+        updateKakaoLogin();
+        getAppKeyHash();
 
     }
+    // 로그인이 되어있는지 안되어있는지 확인 후 button 처리
+    private void updateKakaoLogin() {
+        UserApiClient.getInstance().me(new Function2<User, Throwable, Unit>() {
+            @Override
+            public Unit invoke(User user, Throwable throwable) {
+                if(user != null) {
+
+                    Intent intent =  new Intent(OpenActivity.this, ServiceActivity.class);
+                    startActivity(intent);
+                } else {
+
+                }
+
+                return null;
+            }
+        });
+    }
+
 
 }
