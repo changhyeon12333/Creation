@@ -44,7 +44,7 @@ import java.util.UUID;
 //3. Pairing device
 //4. Send data
 
-public class MainActivity extends AppCompatActivity {
+public class ServiceActivity extends AppCompatActivity {
     Button btnBluetoothOn;
     Button btnBluetoothOff;
 
