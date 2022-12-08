@@ -53,4 +53,13 @@
         app:layout_constraintStart_toStartOf="@+id/btnSendData"
         app:layout_constraintTop_toBottomOf="@+id/btnSendData" />
 
+    <Button
+        android:id="@+id/btnSendData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="전송"
+        app:layout_constraintStart_toStartOf="@+id/btnConnect"
+        app:layout_constraintTop_toBottomOf="@+id/btnConnect" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
