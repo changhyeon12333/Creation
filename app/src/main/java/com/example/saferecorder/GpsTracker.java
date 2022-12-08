@@ -98,13 +98,23 @@ public class GpsTracker extends Service implements LocationListener {
     }
 
 
-    public double getLatitude() {
+    public double getLatitude() { //위도
         if(location != null)
         {
             latitude = location.getLatitude();
         }
         return latitude;
     }
+    public double getLongitude() // 경도
+    {
+        if(location != null)
+        {
+            longitude = location.getLongitude();
+        }
+
+        return longitude;
+    }
+
 
 
     public IBinder onBind(Intent intent) {
