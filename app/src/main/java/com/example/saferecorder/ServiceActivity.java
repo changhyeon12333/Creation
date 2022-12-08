@@ -1,4 +1,4 @@
-package com.example.ble_train;
+package com.example.saferecorder;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
