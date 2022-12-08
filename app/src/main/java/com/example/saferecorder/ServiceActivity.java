@@ -152,6 +152,15 @@ public class ServiceActivity extends AppCompatActivity {
                 }
             }//end else if
 
+            else if(action.equals(BluetoothDevice.ACTION_FOUND)){
+                //get devices
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                mBTdevices.add(device);
+                Toast.makeText(getApplicationContext(), device.getName()+" : "+device.getAddress(), Toast.LENGTH_SHORT).show();
+                //attach device to adapter & set list
+                mDeviceListAdapter = new DeviceListAdapter(context,R.layout.device_adapter_view, mBTdevices);
+                newDevicesList.setAdapter(mDeviceListAdapter);
+            }//end else if
 
         }//end onReceive
     };
