@@ -1,4 +1,4 @@
-package com.example.ble_train;
+package com.example.saferecorder;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
