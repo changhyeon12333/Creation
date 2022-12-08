@@ -59,10 +59,10 @@ public class OpenActivity extends AppCompatActivity {
         btn_kakao_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(UserApiClient.getInstance().isKakaoTalkLoginAvailable(LoginActivity.this)) {  // 해당 기기에 카톡이 설치되어 있는 경우
-                    UserApiClient.getInstance().loginWithKakaoTalk(LoginActivity.this, callback);
+                if(UserApiClient.getInstance().isKakaoTalkLoginAvailable(OpenActivity.this)) {  // 해당 기기에 카톡이 설치되어 있는 경우
+                    UserApiClient.getInstance().loginWithKakaoTalk(OpenActivity.this, callback);
                 } else{    //해당 기기 카톡 설치 X시 카톡 웹페이지로 로그인
-                    UserApiClient.getInstance().loginWithKakaoAccount(LoginActivity.this, callback);
+                    UserApiClient.getInstance().loginWithKakaoAccount(OpenActivity.this, callback);
                 }
             }
         });
@@ -96,6 +96,21 @@ public class OpenActivity extends AppCompatActivity {
                 return null;
             }
         });
+    }
+    /* 카카오 로그인 시 필요한 해시키를 얻는 메소드 */
+    private void getAppKeyHash() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md;
+                md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String something = new String(Base64.encode(md.digest(), 0));
+                Log.e("Hash key", something);
+            }
+        } catch (Exception e) {
+            Log.e("name not found", e.toString());
+        }
     }
 
 
