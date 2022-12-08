@@ -103,6 +103,21 @@ public class ServiceActivity extends AppCompatActivity {
             }
         }
     }
+    // Create a BroadcastReceiver
+    private final BroadcastReceiver mBroadCastReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+
+            if (action.equals(mBluetoothAdapter.ACTION_STATE_CHANGED)) {
+                final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, mBluetoothAdapter.ERROR);
+
+
+
+        }//end onReceive
+    };
+
+
+
 
     public void blueToothOff() {
         if (!mBluetoothAdapter.isEnabled()) {
@@ -149,30 +164,7 @@ public class ServiceActivity extends AppCompatActivity {
         }
     }
 
-    private final BroadcastReceiver mBroadCastReceiver = new BroadcastReceiver() {
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (action.equals(mBluetoothAdapter.ACTION_STATE_CHANGED)) {
-                final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, mBluetoothAdapter.ERROR);
-                switch (state) {
-                    case BluetoothAdapter.STATE_ON:
-                        Toast.makeText(getApplicationContext(), "Bluetooth On", Toast.LENGTH_SHORT).show();
-                        tvBluetoothStatus.setText("Active");
-                        break;
-                    case BluetoothAdapter.STATE_OFF:
-                        Toast.makeText(getApplicationContext(), "Bluetooth Off", Toast.LENGTH_SHORT).show();
-                        tvBluetoothStatus.setText("NonActive");
-                        break;
-                    case BluetoothAdapter.STATE_TURNING_ON:
-                        Toast.makeText(getApplicationContext(), "Bluetooth turning On", Toast.LENGTH_SHORT).show();
-                        break;
-                    case BluetoothAdapter.STATE_TURNING_OFF:
-                        Toast.makeText(getApplicationContext(), "Bluetooth turning Off", Toast.LENGTH_SHORT).show();
-                        break;
-                }
-            }//end if
-        }//end onReceive
-    };
+
 
     protected void onDestroy() {
         Toast.makeText(getApplicationContext(), "onDestroy called", Toast.LENGTH_SHORT).show();
