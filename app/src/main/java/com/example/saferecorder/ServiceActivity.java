@@ -1,6 +1,7 @@
 package com.example.saferecorder;
 import android.bluetooth.BluetoothAdapter;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -29,5 +30,16 @@ public class ServiceActivity extends AppCompatActivity {
 
         //get Defualt of blooth adapter
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        btnBluetoothOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                blueToothOn();
+            }
+        });
+
+        
         }
+
+    private void blueToothOn() {
     }
+}
