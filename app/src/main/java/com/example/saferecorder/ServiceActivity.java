@@ -37,6 +37,14 @@ public class ServiceActivity extends AppCompatActivity {
         btnBluetoothOff = findViewById(R.id.btnBluetoothOff);
         tvBluetoothStatus = findViewById(R.id.tvBluetoothStatus);
 
+        btnFindDiscover.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                bluetoothDiscover();
+            }
+        });
+
+
         //get Defualt of blooth adapter
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         btnBluetoothOn.setOnClickListener(new View.OnClickListener() {
