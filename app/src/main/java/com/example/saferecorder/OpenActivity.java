@@ -26,10 +26,13 @@ import kotlin.jvm.functions.Function2;
 import java.util.Arrays;
 
 
+
+
 public class OpenActivity extends AppCompatActivity {
 
     private View btn_kakao_login;
     private View btn_saferecorder_login;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,31 @@ public class OpenActivity extends AppCompatActivity {
 
         btn_kakao_login = findViewById(R.id.lg_kakao_btn);
         btn_saferecorder_login = findViewById(R.id.lg_saferecorder_btn);
+
+        Function2<OAuthToken, Throwable, Unit> callback = new Function2<OAuthToken, Throwable, Unit>(){
+            @Override
+            public Unit invoke(OAuthToken oAuthToken, Throwable throwable) {
+                if(oAuthToken != null) {    // 로그인 성공시 처리
+                    updateKakaoLogin();
+                }
+                if(throwable != null) {     // 로그인 실패시
+
+                }
+
+                return null;
+            }
+
+        };
+        btn_kakao_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(UserApiClient.getInstance().isKakaoTalkLoginAvailable(LoginActivity.this)) {  // 해당 기기에 카톡이 설치되어 있는 경우
+                    UserApiClient.getInstance().loginWithKakaoTalk(LoginActivity.this, callback);
+                } else{    //해당 기기 카톡 설치 X시 카톡 웹페이지로 로그인
+                    UserApiClient.getInstance().loginWithKakaoAccount(LoginActivity.this, callback);
+                }
+            }
+        });
 
         // saferecorder 로그인 버튼 클릭시 로그인 페이지로 이동
         btn_saferecorder_login.setOnClickListener(new View.OnClickListener() {
