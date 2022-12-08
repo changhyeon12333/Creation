@@ -82,6 +82,13 @@ public class ServiceActivity extends AppCompatActivity {
             }
         });
 
+        btnFindDiscover.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                bluetoothDiscover();
+            }
+        });
+
     }
 
     public void blueToothOff() {
