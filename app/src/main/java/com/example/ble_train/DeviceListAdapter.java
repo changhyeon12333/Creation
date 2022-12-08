@@ -1,14 +1,25 @@
 package com.example.ble_train;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+
+import com.example.saferecorder.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DeviceListAdapter extends ArrayAdapter<BluetoothDevice> {
     private LayoutInflater mLayoutInflater;
@@ -21,11 +32,13 @@ public class DeviceListAdapter extends ArrayAdapter<BluetoothDevice> {
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mViewResourceId = resourceId;
     }
-    public View getView(int position , View convertView, ViewGroup parent){
-        convertView = mLayoutInflater.inflate(mViewResourceId,null);
+
+    @SuppressLint("MissingPermission")
+    public View getView(int position, View convertView, ViewGroup parent) {
+        convertView = mLayoutInflater.inflate(mViewResourceId, null);
         BluetoothDevice device = mDevices.get(position);
 
-        if(device!=null){
+        if (device != null) {
             TextView deviceName = (TextView) convertView.findViewById(R.id.tvDeviceName);
             TextView deviceAddress = (TextView) convertView.findViewById(R.id.tvDeviceAddress);
             //원래 null검사 해야하는데 검색되는 것중 null인게 있어서 뺌
