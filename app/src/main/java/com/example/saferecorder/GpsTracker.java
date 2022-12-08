@@ -116,13 +116,40 @@ public class GpsTracker extends Service implements LocationListener {
     }
 
 
-
-    public IBinder onBind(Intent intent) {
-        return null;
+    @Override
+    public void onLocationChanged(Location location)
+    {
     }
 
     @Override
-    public void onLocationChanged(@NonNull Location location) {
-
+    public void onProviderDisabled(String provider)
+    {
     }
+
+    @Override
+    public void onProviderEnabled(String provider)
+    {
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras)
+    {
+    }
+
+    @Override
+    public IBinder onBind(Intent arg0)
+    {
+        return null;
+    }
+
+
+    public void stopUsingGPS()
+    {
+        if(locationManager != null)
+        {
+            locationManager.removeUpdates(GpsTracker.this);
+        }
+    }
+
+
 }
