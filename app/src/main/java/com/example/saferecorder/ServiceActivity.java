@@ -49,6 +49,11 @@ public class ServiceActivity extends AppCompatActivity {
     private static String ACELL = "ACELL"; //ACELL
     private static String BREAK = "BREAK"; //BREAK
 
+    private GpsTracker gpsTracker; //GPS
+    private static final int GPS_ENABLE_REQUEST_CODE = 2001;
+    private static final int PERMISSIONS_REQUEST_CODE = 100;
+    String[] REQUIRED_PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+
     Button btnBluetoothOn;
     Button btnBluetoothOff;
 
@@ -74,6 +79,13 @@ public class ServiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service);
 
+        if (checkLocationServicesStatus()) {
+            checkRunTimePermission();
+        } else {
+            showDialogForLocationServiceSetting();
+        }
+
+
         //initialize
         btnBluetoothOn = findViewById(R.id.btnBluetoothOn);
         btnBluetoothOff = findViewById(R.id.btnBluetoothOff);
@@ -82,6 +94,7 @@ public class ServiceActivity extends AppCompatActivity {
         btnDiscover = findViewById(R.id.btnDiscover);
         btnFindDiscover = findViewById(R.id.btnFindDiscover);
         newDevicesList = (ListView) findViewById(R.id.newDevicesList);
+        Button ShowLocationButton = (Button) findViewById(R.id.btnSendData);
         mBTdevices = new ArrayList<>();
 
         //get Defualt of blooth adapter | get Permitted(Manifest)
@@ -116,10 +129,16 @@ public class ServiceActivity extends AppCompatActivity {
             }
         });
 
-        btnSendData.setOnClickListener(new View.OnClickListener(){
+        ShowLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                make_php();
+            public void onClick(View arg0) {
+
+                gpsTracker = new GpsTracker(GPSActivity.this);
+
+                double latitude = gpsTracker.getLatitude();
+                double longitude = gpsTracker.getLongitude();
+
+                Toast.makeText(GPSActivity.this, "현재위치 \n위도 " + latitude + "\n경도 " + longitude, Toast.LENGTH_LONG).show();
             }
         });
 
