@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -49,5 +50,11 @@ public class ServiceActivity extends AppCompatActivity {
     }
 
     private void blueToothOn() {
+        if (mBluetoothAdapter == null) {
+            Toast.makeText(getApplicationContext(), "This device doesn't support bluetooth service", Toast.LENGTH_SHORT).show();
+            tvBluetoothStatus.setText("NonActive");
+        } else if (mBluetoothAdapter.isEnabled()) {
+            Toast.makeText(getApplicationContext(), "Already On", Toast.LENGTH_SHORT).show();
+        }
     }
 }
