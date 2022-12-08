@@ -136,6 +136,12 @@ public class ServiceActivity extends AppCompatActivity {
         super.onDestroy();
         unregisterReceiver(mBroadCastReceiver);
     }
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void checkBTPermissions(){
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
+
+        }
+    }
     public void bluetoothDiscover(){
         if(mBluetoothAdapter.isDiscovering()){ //already discovering > cancel > discover
             mBluetoothAdapter.cancelDiscovery();
