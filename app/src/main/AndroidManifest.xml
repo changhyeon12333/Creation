@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.saferecorder">
 
-    <uses-permission android:name="android.permission.INTERNET" /> //인터넷 사용 허용
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,14 +14,18 @@
         android:theme="@style/Theme.SafeRecorder"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:host="oauth"
-                    android:scheme="kakao네이티브 앱 키" />
+
+                <data
+                    android:host="oauth"
+                    android:scheme="6ea79806e036bb0e19b63fce34628eb7" />
             </intent-filter>
         </activity>
         <activity
