@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -101,6 +102,12 @@ public class ServiceActivity extends AppCompatActivity {
             }//end if
         }//end onReceive
     };
+    protected void onDestroy() {
+        Toast.makeText(getApplicationContext(), "onDestroy called", Toast.LENGTH_SHORT).show();
+        Log.d("onDestroy", "onDestroy called");
+        super.onDestroy();
+        unregisterReceiver(mBroadCastReceiver);
+    }
 
 
 }
