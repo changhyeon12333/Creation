@@ -81,4 +81,12 @@
         app:layout_constraintStart_toStartOf="@+id/tvReceiveData"
         app:layout_constraintTop_toBottomOf="@+id/tvReceiveData" />
 
+    <Button
+        android:id="@+id/btnFindDiscover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="디바이스 찾기"
+        app:layout_constraintStart_toEndOf="@+id/btnDiscover"
+        app:layout_constraintTop_toTopOf="@+id/btnDiscover" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
