@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".RegisterActivity">
     <EditText
         android:id="@+id/et_id"
         android:layout_width="200dp"
         android:layout_height="45dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="200dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
@@ -59,15 +60,18 @@
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
         android:text="회원가입"
+        app:backgroundTint="#595959"
         app:layout_constraintEnd_toEndOf="@+id/et_carnum"
         app:layout_constraintStart_toStartOf="@+id/et_carnum"
         app:layout_constraintTop_toBottomOf="@+id/et_carnum" />
+
     <Button
         android:id="@+id/validateButton"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="200dp"
         android:text="중복확인"
+        app:backgroundTint="#595959"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toEndOf="@+id/et_id"
