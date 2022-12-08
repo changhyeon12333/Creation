@@ -27,6 +27,13 @@
         app:layout_constraintStart_toEndOf="@+id/btnBluetoothOn"
         app:layout_constraintTop_toTopOf="@+id/btnBluetoothOn" />
 
-
+    <TextView
+        android:id="@+id/tvBluetoothStatus"
+        android:layout_width="170dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:text="status"
+        app:layout_constraintStart_toStartOf="@+id/btnBluetoothOn"
+        app:layout_constraintTop_toBottomOf="@+id/btnBluetoothOn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
