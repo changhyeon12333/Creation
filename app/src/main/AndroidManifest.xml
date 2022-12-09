@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.saferecorder">
+
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> //bluetooth
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> // discover 권한
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> //background
@@ -17,7 +19,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />//gps
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> // 저장소 읽기 쓰기 권한
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,6 +30,9 @@
         android:theme="@style/Theme.SafeRecorder"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity
+            android:name=".PrivacyActivity"
+            android:exported="false" />
         <activity
             android:name=".SettingActivity"
             android:exported="false" />
