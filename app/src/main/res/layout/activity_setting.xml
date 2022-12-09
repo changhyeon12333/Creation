@@ -21,8 +21,9 @@
             android:id="@+id/count_check_btn"
             android:layout_width="290"
             android:layout_height="45dp"
-            android:layout_marginTop="200dp"
+            android:layout_marginBottom="100dp"
             android:src="@drawable/count_check_btn"
+            android:layout_gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,8 +32,9 @@
             android:id="@+id/priv_cng_btn"
             android:layout_width="290dp"
             android:layout_height="45dp"
-            android:layout_marginTop="300dp"
+            android:layout_marginBottom="0dp"
             android:src="@drawable/information_change_btn"
+            android:layout_gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -41,8 +43,9 @@
             android:id="@+id/app_down_btn"
             android:layout_width="290dp"
             android:layout_height="45dp"
-            android:layout_marginTop="400dp"
+            android:layout_marginTop="100dp"
             android:src="@drawable/app_down_btn"
+            android:layout_gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </FrameLayout>
