@@ -32,7 +32,7 @@ public class SettingActivity extends AppCompatActivity {
                 finish();
             }
         });
-        // 마이페이지 클릭시 프레그먼트 변환
+        // 개인정보변경 클릭시 프레그먼트 변환
         btn_priv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,3 +41,18 @@ public class SettingActivity extends AppCompatActivity {
         });
     }
 }
+    private void viewMypage(int whr) {
+        if(whr == 0) {      // 개인정보변경
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            PrivacyFragment myFragment = new PrivacyFragment();
+            transaction.replace(R.id.frame, PrFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        } else if(whr == 1) {     //AL,BL값 확인
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            CountFragment optFragment = new CountFragment();
+            transaction.replace(R.id.frame, CtFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
+    }
