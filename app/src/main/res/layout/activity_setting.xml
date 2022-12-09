@@ -4,14 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     tools:context=".SettingActivity">
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/menu_back_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType='fitXY'
+            app:srcCompat="@drawable/background" />
 
     <ImageButton
         android:id="@+id/count_check_btn"
         android:layout_width="290dp"
         android:layout_height="45dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="240dp"
         android:src="@drawable/count_check_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,5 +50,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/priv_cng_btn"
         app:layout_constraintTop_toBottomOf="@+id/priv_cng_btn" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
