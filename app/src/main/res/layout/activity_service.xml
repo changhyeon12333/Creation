@@ -118,8 +118,18 @@
         android:layout_width="98dp"
         android:layout_height="49dp"
         android:layout_marginStart="80dp"
-        android:text="TextView"
+        android:text="현제 엑셀 값"
         app:layout_constraintStart_toEndOf="@+id/tvBreak"
-        tools:layout_editor_absoluteY="564dp" />
+        tools:layout_editor_absoluteY="564dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tvRatitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="경도를 표시합니다 :"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="643dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
