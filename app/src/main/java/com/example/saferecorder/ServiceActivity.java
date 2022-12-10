@@ -108,3 +108,10 @@ public class ServiceActivity extends AppCompatActivity {
                 blueToothOn();
             }
         });
+
+        btnBluetoothOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                blueToothOff();
+            }
+        });
