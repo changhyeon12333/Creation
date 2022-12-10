@@ -129,3 +129,16 @@ public class ServiceActivity extends AppCompatActivity {
                 bluetoothDiscover();
             }
         });
+
+        ShowLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+
+                gpsTracker = new GpsTracker(ServiceActivity.this);
+
+                double latitude = gpsTracker.getLatitude();
+                double longitude = gpsTracker.getLongitude();
+
+                Toast.makeText(ServiceActivity.this, "현재위치 \n위도 " + latitude + "\n경도 " + longitude, Toast.LENGTH_LONG).show();
+            }
+        });
