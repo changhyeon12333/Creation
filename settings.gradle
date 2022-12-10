@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Safe Recorder"
 include ':app'
+
+compile 'com.akexorcist:bluetoothspp:1.0.0'
