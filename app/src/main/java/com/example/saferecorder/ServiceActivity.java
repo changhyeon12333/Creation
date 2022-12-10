@@ -292,3 +292,11 @@ public class ServiceActivity extends AppCompatActivity {
         super.onDestroy();
         unregisterReceiver(mBroadCastReceiver);
     }
+
+    @Override
+    public void onRequestPermissionsResult(int permsRequestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grandResults) {
+
+        super.onRequestPermissionsResult(permsRequestCode, permissions, grandResults);
+        if (permsRequestCode == PERMISSIONS_REQUEST_CODE && grandResults.length == REQUIRED_PERMISSIONS.length) {
