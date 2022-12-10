@@ -83,3 +83,13 @@ public class ServiceActivity extends AppCompatActivity {
 
         if (checkLocationServicesStatus()) {
             checkRunTimePermission();
+        } else {
+            showDialogForLocationServiceSetting();
+        }
+
+
+        //initialize
+        btnBluetoothOn = findViewById(R.id.btnBluetoothOn);
+        btnBluetoothOff = findViewById(R.id.btnBluetoothOff);
+        tvBluetoothStatus = findViewById(R.id.tvBluetoothStatus);
+        btnConnect = findViewById(R.id.btnConnect);
