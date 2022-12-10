@@ -266,3 +266,11 @@ public class ServiceActivity extends AppCompatActivity {
     public void bluetoothDiscover(){
         if(mBluetoothAdapter.isDiscovering()){ //already discovering > cancel
             mBluetoothAdapter.cancelDiscovery();
+            Toast.makeText(getApplicationContext(), "Canceling discovery", Toast.LENGTH_SHORT).show();
+
+            checkBTPermissions(); //check for permissions
+
+            mBluetoothAdapter.startDiscovery();
+            IntentFilter discoverDevicesIntent = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+            registerReceiver(mBroadCastReceiver,discoverDevicesIntent);
+        }
