@@ -104,7 +104,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnDiscover" />
 
     <TextView
-        android:id="@+id/tvbreak"
+        android:id="@+id/tvBreak"
         android:layout_width="106dp"
         android:layout_height="64dp"
         android:layout_marginStart="48dp"
@@ -112,5 +112,14 @@
         android:text="현제 브레이크 값"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newDevicesList" />
+
+    <TextView
+        android:id="@+id/tvAcell"
+        android:layout_width="98dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="80dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/tvBreak"
+        tools:layout_editor_absoluteY="564dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
