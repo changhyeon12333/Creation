@@ -69,3 +69,9 @@ public class ServiceActivity extends AppCompatActivity {
     public DeviceListAdapter mDeviceListAdapter;
     ListView newDevicesList;
     Button btnFindDiscover;
+
+    //BT SETTING
+    final static int BT_REQUEST_ENABLE = 1;
+    final static int BT_MESSAGE_READ = 2;
+    final static int BT_CONNECTING_STATUS = 3;
+
