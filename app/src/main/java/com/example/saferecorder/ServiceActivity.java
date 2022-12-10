@@ -93,3 +93,7 @@ public class ServiceActivity extends AppCompatActivity {
         btnBluetoothOff = findViewById(R.id.btnBluetoothOff);
         tvBluetoothStatus = findViewById(R.id.tvBluetoothStatus);
         btnConnect = findViewById(R.id.btnConnect);
+        btnFindDiscover = findViewById(R.id.btnFindDiscover);
+        newDevicesList = (ListView) findViewById(R.id.newDevicesList);
+        Button ShowLocationButton = (Button) findViewById(R.id.btnSendData);
+        mBTdevices = new ArrayList<>();
