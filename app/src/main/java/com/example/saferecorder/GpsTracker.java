@@ -125,4 +125,14 @@ public class GpsTracker extends Service implements LocationListener {
     }
 
 
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
+
+    }
 }
