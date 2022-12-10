@@ -122,3 +122,10 @@ public class ServiceActivity extends AppCompatActivity {
                 bluetoothDiscovery();
             }
         });
+
+        btnFindDiscover.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                bluetoothDiscover();
+            }
+        });
