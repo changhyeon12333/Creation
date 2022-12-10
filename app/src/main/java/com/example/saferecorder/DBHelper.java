@@ -1,52 +1,69 @@
 package com.example.saferecorder;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 public class DBHelper extends SQLiteOpenHelper {
-    private Context context;
+    static final String DATABASE_NAME = "test.db";
 
-
-    public DBHelper(PrivacyFragment context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
-        this.context = context;
+    // DBHelper 생성자
+    public DBHelper(Context context, int version) {
+        super(context, DATABASE_NAME, null, version);
     }
 
-    /**
-     * DB가 존재하지 않을 때, 딱 한번 실행된다
-     * DB를 생성하는 역할
-     * @param db
-     */
+    // Person Table 생성
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-        StringBuffer sb = new StringBuffer();
-        sb.append( " CREATE TABLE TEST_TABLE ( ");
-        sb.append( " _ID INTEGER PRIMARY KEY AUTOINCREMENT, ");
-        sb.append( " NAME TEXT, " );
-        sb.append( " AGE INTEGER, ");
-        sb.append( " PHONE TEXT); ");
-        // SQL 실행
-        db.execSQL(sb.toString());
-
-        Toast.makeText(context, "테이블 생성됨", Toast.LENGTH_SHORT).show();
+        db.execSQL("CREATE TABLE Person(name TEXT, Age INT, ADDR TEXT)");
     }
 
-    /**
-     * Application의 버전이 올라가 Table 구조가 변경되었을 때 실행
-     * @param db
-     * @param oldVersion
-     * @param newVersion
-     */
+    // Person Table Upgrade
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Toast.makeText(context, "Version 올라감", Toast.LENGTH_SHORT).show();
+        db.execSQL("DROP TABLE IF EXISTS Person");
+        onCreate(db);
     }
 
-    public void testDB(){
+    // Person Table 데이터 입력
+    public void insert(String name, int age, String Addr) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("INSERT INTO Person VALUES('" + name + "', " + age + ", '" + Addr + "')");
+        db.close();
+    }
+
+    // Person Table 데이터 수정
+    public void Update(String name, int age, String Addr) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("UPDATE Person SET age = " + age + ", ADDR = '" + Addr + "'" + " WHERE NAME = '" + name + "'");
+        db.close();
+    }
+
+    // Person Table 데이터 삭제
+    public void Delete(String name) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE Person WHERE NAME = '" + name + "'");
+        db.close();
+    }
+
+    // Person Table 조회
+    public String getResult() {
+        // 읽기가 가능하게 DB 열기
         SQLiteDatabase db = getReadableDatabase();
-    }
+        String result = "";
 
+        // DB에 있는 데이터를 쉽게 처리하기 위해 Cursor를 사용하여 테이블에 있는 모든 데이터 출력
+        Cursor cursor = db.rawQuery("SELECT * FROM Person", null);
+        while (cursor.moveToNext()) {
+            result += " 이름 : " + cursor.getString(0)
+                    + ", 나이 : "
+                    + cursor.getInt(1)
+                    + ", 주소 : "
+                    + cursor.getString(2)
+                    + "\n";
+        }
+
+        return result;
+    }
 }

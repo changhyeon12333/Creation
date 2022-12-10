@@ -5,16 +5,71 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.saferecorder.PrivacyFragment">
-
-    <ImageButton
-        android:id="@+id/create_privacy_btn"
-        android:layout_width="290dp"
+    <EditText
+        android:id="@+id/edtName"
+        android:layout_width="200dp"
         android:layout_height="45dp"
-        android:layout_marginTop="152dp"
-        android:layout_marginEnd="8dp"
-        android:src="@drawable/create_privacy_btn"
+        android:layout_marginTop="200dp"
+        android:ems="10"
+        android:hint="성명"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginTop="200dp"
+        android:text="저장하기"
+        app:backgroundTint="#595959"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toEndOf="@+id/edtAge"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtAge"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="나이"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/edtName"
+        app:layout_constraintStart_toStartOf="@+id/edtName"
+        app:layout_constraintTop_toBottomOf="@+id/edtName" />
+
+    <EditText
+        android:id="@+id/edtAddr"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="주소"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/edtAge"
+        app:layout_constraintStart_toStartOf="@+id/edtAge"
+        app:layout_constraintTop_toBottomOf="@+id/edtAge" />
+
+    <Button
+        android:id="@+id/btnSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:text="조회하기"
+        app:backgroundTint="#595959"
+        app:layout_constraintEnd_toEndOf="@+id/edtAddr"
+        app:layout_constraintStart_toStartOf="@+id/edtAddr"
+        app:layout_constraintTop_toBottomOf="@+id/edtAddr" />
+
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="290dp"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnSelect"
+        app:layout_constraintStart_toStartOf="@+id/btnSelect"
+        app:layout_constraintTop_toBottomOf="@+id/btnSelect"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

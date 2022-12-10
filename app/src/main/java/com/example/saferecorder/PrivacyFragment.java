@@ -22,55 +22,50 @@ import androidx.fragment.app.Fragment;
 
 import com.example.saferecorder.DBHelper;
 
-public class PrivacyFragment extends Fragment {
+public class PrivacyFragment extends Fragment implements View.OnClickListener{
 
-    private Button btnCreateDatabase;
-    private DBHelper dbHelper;
+    // 디자인 변수 선언
+    Button btnSave;
+    Button btnSelect;
+
+    EditText edtName;
+    EditText edtAge;
+    EditText edtAddr;
+    TextView viewResult;
+
+    // DBHelper
+    DBHelper dbHelper;
+
 
     @SuppressLint("WrongViewCast")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_privacy, container, false);
-        btnCreateDatabase = (Button) v.findViewById(R.id.create_privacy_btn);
-        btnCreateDatabase.setOnClickListener(new View.OnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
+        // Control 매핑
+        btnSave = (Button) v.findViewById(R.id.btnSave);
+        btnSelect = (Button) v.findViewById(R.id.btnSelect);
+        edtName = (EditText) v.findViewById(R.id.edtName);
+        edtAge = (EditText) v.findViewById(R.id.edtAge);
+        edtAddr = (EditText) v.findViewById(R.id.edtAddr);
+        viewResult = (TextView) v.findViewById(R.id.txtResult);
 
-                final EditText etDBName = new EditText(PrivacyFragment.this);
-                etDBName.setHint("개인정보를 입력하세요");
+        // 버튼 클릭 이벤트 정의
+        btnSave.setOnClickListener(this);
+        btnSelect.setOnClickListener(this);
 
-                AlertDialog.Builder dialog = new AlertDialog.Builder(PrivacyFragment.this);
-                dialog.setTitle("이름을 ")
-                        .setMessage(("이름을 입력하세요"))
-                        .setView(etDBName)
-                        .setPositiveButton("생성", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                if(etDBName.getText().toString().length()>0){
-                                    dbHelper = new DBHelper(PrivacyFragment.this,
-                                            etDBName.getText().toString(),
-                                            null, 1);
-                                }
-                                dbHelper.testDB();
-
-                                // Toast.makeText(MainActivity.this, etDBName.getText(), Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                            }
-                        })
-                        .create()
-                        .show();
-
-            }
-        }));
-        return inflater.inflate(R.layout.fragment_privacy, container, false);
-        return v;
+        dbHelper = new DBHelper(PrivacyFragment.this, 1);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnSave:
+                dbHelper.insert(edtName.getText().toString(), Integer.parseInt(edtAge.getText().toString()), edtAddr.getText().toString());
+                break;
+            case R.id.btnSelect:
+                viewResult.setText(dbHelper.getResult());
+                break;
+        }
+    }
 }
