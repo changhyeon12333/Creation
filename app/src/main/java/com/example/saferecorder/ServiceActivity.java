@@ -180,3 +180,8 @@ public class ServiceActivity extends AppCompatActivity {
                     case BluetoothAdapter.STATE_TURNING_ON:
                         Toast.makeText(getApplicationContext(), "Bluetooth turning On", Toast.LENGTH_SHORT).show();
                         break;
+                    case BluetoothAdapter.STATE_TURNING_OFF:
+                        Toast.makeText(getApplicationContext(), "Bluetooth turning Off", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }//end if
