@@ -339,3 +339,15 @@ public class ServiceActivity extends AppCompatActivity {
                 Toast.makeText(ServiceActivity.this, "이 앱을 실행하려면 위치 접근 권한이 필요합니다.", Toast.LENGTH_LONG).show();
                 ActivityCompat.requestPermissions(ServiceActivity.this, REQUIRED_PERMISSIONS,
                         PERMISSIONS_REQUEST_CODE);
+
+            } else {
+                ActivityCompat.requestPermissions(ServiceActivity.this, REQUIRED_PERMISSIONS,
+                        PERMISSIONS_REQUEST_CODE);
+            }
+
+        }
+
+    }
+    private void showDialogForLocationServiceSetting() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ServiceActivity.this);
+        builder.setTitle("위치 서비스 비활성화");
