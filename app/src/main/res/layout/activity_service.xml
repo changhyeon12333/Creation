@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".ServiceActivity">
 
     <Button
         android:id="@+id/btnBluetoothOn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="100dp"
         android:text="블루투스 ON"
+        app:backgroundTint="#595959"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        app:backgroundTint="#595959"
         android:text="블루투스 OFF"
         app:layout_constraintStart_toEndOf="@+id/btnBluetoothOn"
         app:layout_constraintTop_toTopOf="@+id/btnBluetoothOn" />
@@ -40,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
+        app:backgroundTint="#595959"
         android:text="연결하기"
         app:layout_constraintStart_toStartOf="@+id/tvBluetoothStatus"
         app:layout_constraintTop_toBottomOf="@+id/tvBluetoothStatus" />
@@ -58,6 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        app:backgroundTint="#595959"
         android:text="전송"
         app:layout_constraintStart_toStartOf="@+id/btnConnect"
         app:layout_constraintTop_toBottomOf="@+id/btnConnect" />
@@ -77,6 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        app:backgroundTint="#595959"
         android:text="디바이스 찾기 허용"
         app:layout_constraintStart_toStartOf="@+id/tvReceiveData"
         app:layout_constraintTop_toBottomOf="@+id/tvReceiveData" />
@@ -85,6 +90,7 @@
         android:id="@+id/btnFindDiscover"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:backgroundTint="#595959"
         android:text="디바이스 찾기"
         app:layout_constraintStart_toEndOf="@+id/btnDiscover"
         app:layout_constraintTop_toTopOf="@+id/btnDiscover" />
