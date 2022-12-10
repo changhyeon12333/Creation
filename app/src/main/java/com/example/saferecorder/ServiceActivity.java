@@ -234,3 +234,12 @@ public class ServiceActivity extends AppCompatActivity {
             //Ask user
             Intent intentBluetoothEnable = new Intent(mBluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(intentBluetoothEnable, BT_REQUEST_ENABLE);//BT_REQUEST_ENABLE : ModeId
+
+            //Intercept Status changed (by.broadcast)
+            IntentFilter BTIntent = new IntentFilter(mBluetoothAdapter.ACTION_STATE_CHANGED);
+            registerReceiver(mBroadCastReceiver, BTIntent);
+
+        }
+    }
+
+    public void blueToothOff() {
