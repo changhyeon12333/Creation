@@ -22,10 +22,19 @@ import androidx.fragment.app.Fragment;
 
 import com.example.saferecorder.DBHelper;
 
-public class PrivacyFragment extends Fragment {
+public class PrivacyFragment extends Fragment implements View.OnClickListener{
 
-    private Button btnCreateDatabase;
-    private DBHelper dbHelper;
+    // 디자인 변수 선언
+    Button btnSave;
+    Button btnSelect;
+
+    EditText edtName;
+    EditText edtAge;
+    EditText edtAddr;
+    TextView viewResult;
+
+    // DBHelper
+    DBHelper dbHelper;
 
     @SuppressLint("WrongViewCast")
     @Override
