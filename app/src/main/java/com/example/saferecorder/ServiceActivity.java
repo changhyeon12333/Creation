@@ -323,3 +323,10 @@ public class ServiceActivity extends AppCompatActivity {
 
         }
     }
+
+
+    void checkRunTimePermission() {
+        int hasFineLocationPermission = ContextCompat.checkSelfPermission(ServiceActivity.this,
+                Manifest.permission.ACCESS_FINE_LOCATION);
+        int hasCoarseLocationPermission = ContextCompat.checkSelfPermission(ServiceActivity.this,
+                Manifest.permission.ACCESS_COARSE_LOCATION);
