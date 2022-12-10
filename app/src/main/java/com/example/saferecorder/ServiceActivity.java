@@ -55,3 +55,17 @@ public class ServiceActivity extends AppCompatActivity {
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
     private static final int PERMISSIONS_REQUEST_CODE = 100;
     String[] REQUIRED_PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+
+    Button btnBluetoothOn;
+    Button btnBluetoothOff;
+
+    TextView tvBluetoothStatus;
+    Button btnConnect;
+
+    BluetoothAdapter mBluetoothAdapter;
+
+    Button btnDiscover;
+    public ArrayList<BluetoothDevice> mBTdevices;
+    public DeviceListAdapter mDeviceListAdapter;
+    ListView newDevicesList;
+    Button btnFindDiscover;
