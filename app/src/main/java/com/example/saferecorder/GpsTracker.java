@@ -89,3 +89,17 @@ public class GpsTracker extends Service implements LocationListener {
             }
         }
         catch (Exception e)
+
+        {
+            Log.d("@@@", ""+e.toString());
+        }
+
+        return location;
+    }
+
+
+    public double getLatitude() { //위도
+        if(location != null)
+        {
+            latitude = location.getLatitude();
+        }
