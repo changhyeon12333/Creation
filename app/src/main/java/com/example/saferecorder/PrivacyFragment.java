@@ -3,6 +3,8 @@ package com.example.saferecorder;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,12 +26,12 @@ public class PrivacyFragment extends Fragment {
     private Button btnCreateDatabase;
     private DBHelper dbHelper;
 
+    @SuppressLint("WrongViewCast")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_privacy);
-
-        btnCreateDatabase = (Button) findViewById(R.id.create_privacy_btn);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_privacy, container, false);
+        btnCreateDatabase = (Button) v.findViewById(R.id.create_privacy_btn);
         btnCreateDatabase.setOnClickListener(new View.OnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -66,6 +68,8 @@ public class PrivacyFragment extends Fragment {
 
             }
         });
+        return inflater.inflate(R.layout.fragment_privacy, container, false);
+        return v;
     }
 
 }
