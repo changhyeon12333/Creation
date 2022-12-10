@@ -44,8 +44,6 @@ public class GpsTracker extends Service implements LocationListener {
                         Manifest.permission.ACCESS_FINE_LOCATION);
                 int hasCoarseLocationPermission = ContextCompat.checkSelfPermission(mContext,
                         Manifest.permission.ACCESS_COARSE_LOCATION);
-
-
                 if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED &&
                         hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED) {                    ;
 
