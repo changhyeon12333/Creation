@@ -21,7 +21,18 @@
         android:layout_height="wrap_content"
         android:text="졸음방지모드 On/Off"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="116dp"
-        tools:layout_editor_absoluteY="259dp" />
+        tools:layout_editor_absoluteX="68dp"
+        tools:layout_editor_absoluteY="105dp" />
+    
+    <TextView
+        android:layout_width="122dp"
+        android:layout_height="53dp"
+        android:text="자동신고 서비스"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.944"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.989" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
