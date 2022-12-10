@@ -199,3 +199,11 @@ public class ServiceActivity extends AppCompatActivity {
                     case BluetoothAdapter.SCAN_MODE_NONE:
                         Toast.makeText(getApplicationContext(), "Discoverability Disabled. Not able to receive connections", Toast.LENGTH_SHORT).show();
                         break;
+                    case BluetoothAdapter.STATE_CONNECTING:
+                        Toast.makeText(getApplicationContext(), "Connecting...", Toast.LENGTH_SHORT).show();
+                        break;
+                    case BluetoothAdapter.STATE_CONNECTED:
+                        Toast.makeText(getApplicationContext(), "Connected.",Toast.LENGTH_SHORT).show();
+                        break;
+
+                }
