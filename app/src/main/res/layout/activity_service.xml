@@ -132,4 +132,13 @@
         tools:layout_editor_absoluteY="643dp"
         tools:ignore="MissingConstraints" />
 
+    <TextView
+        android:id="@+id/tvLongitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="위도를 표시합니다:"
+        tools:layout_editor_absoluteX="211dp"
+        tools:layout_editor_absoluteY="634dp"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
