@@ -284,3 +284,11 @@ public class ServiceActivity extends AppCompatActivity {
             registerReceiver(mBroadCastReceiver,discoverDevicesIntent);
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        Toast.makeText(getApplicationContext(), "onDestroy called", Toast.LENGTH_SHORT).show();
+        Log.d("onDestroy", "onDestroy called");
+        super.onDestroy();
+        unregisterReceiver(mBroadCastReceiver);
+    }
