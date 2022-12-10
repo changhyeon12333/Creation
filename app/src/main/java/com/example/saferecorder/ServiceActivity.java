@@ -44,3 +44,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+
+
+public class ServiceActivity extends AppCompatActivity {
+    private static String IP_ADDRESS = "http://dtp06077.dothome.co.kr/Login2.php"; //IP주소
+    private static String ACELL = "ACELL"; //ACELL
+    private static String BREAK = "BREAK"; //BREAK
+
+    private GpsTracker gpsTracker; //GPS
+    private static final int GPS_ENABLE_REQUEST_CODE = 2001;
+    private static final int PERMISSIONS_REQUEST_CODE = 100;
+    String[] REQUIRED_PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
