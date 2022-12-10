@@ -257,3 +257,12 @@ public class ServiceActivity extends AppCompatActivity {
         Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
         discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION,300);
         startActivity(discoverableIntent);
+
+        //get scanmode change
+        IntentFilter intentFilter = new IntentFilter(mBluetoothAdapter.ACTION_SCAN_MODE_CHANGED);
+        registerReceiver(mBroadCastReceiver,intentFilter);
+    }
+
+    public void bluetoothDiscover(){
+        if(mBluetoothAdapter.isDiscovering()){ //already discovering > cancel
+            mBluetoothAdapter.cancelDiscovery();
