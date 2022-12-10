@@ -53,4 +53,23 @@
         app:layout_constraintStart_toStartOf="@+id/edtAge"
         app:layout_constraintTop_toBottomOf="@+id/edtAge" />
 
+    <Button
+        android:id="@+id/btnSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:text="조회하기"
+        app:backgroundTint="#595959"
+        app:layout_constraintEnd_toEndOf="@+id/edtAddr"
+        app:layout_constraintStart_toStartOf="@+id/edtAddr"
+        app:layout_constraintTop_toBottomOf="@+id/edtAddr" />
+
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="290dp"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnSelect"
+        app:layout_constraintStart_toStartOf="@+id/btnSelect"
+        app:layout_constraintTop_toBottomOf="@+id/btnSelect"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
