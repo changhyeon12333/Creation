@@ -250,3 +250,10 @@ public class ServiceActivity extends AppCompatActivity {
             mBluetoothAdapter.disable();
         }
     }
+
+    public void bluetoothDiscovery(){
+        Toast.makeText(getApplicationContext(), "Making device discoverable for 300 seconds.",Toast.LENGTH_SHORT).show();
+
+        Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION,300);
+        startActivity(discoverableIntent);
