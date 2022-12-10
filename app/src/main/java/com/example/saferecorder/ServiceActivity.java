@@ -97,3 +97,14 @@ public class ServiceActivity extends AppCompatActivity {
         newDevicesList = (ListView) findViewById(R.id.newDevicesList);
         Button ShowLocationButton = (Button) findViewById(R.id.btnSendData);
         mBTdevices = new ArrayList<>();
+
+        //get Defualt of blooth adapter | get Permitted(Manifest)
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+        //1. Bluetooth on/off
+        btnBluetoothOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                blueToothOn();
+            }
+        });
