@@ -207,3 +207,9 @@ public class ServiceActivity extends AppCompatActivity {
                         break;
 
                 }
+            }//end else if
+
+            else if(action.equals(BluetoothDevice.ACTION_FOUND)){
+                //get devices
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                mBTdevices.add(device);
