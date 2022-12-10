@@ -94,11 +94,51 @@
         android:text="디바이스 찾기"
         app:layout_constraintStart_toEndOf="@+id/btnDiscover"
         app:layout_constraintTop_toTopOf="@+id/btnDiscover" />
+
     <ListView
         android:id="@+id/newDevicesList"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="@+id/btnDiscover"
         app:layout_constraintTop_toBottomOf="@+id/btnDiscover" />
+
+    <TextView
+        android:id="@+id/tvBreak"
+        android:layout_width="106dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="28dp"
+        android:text="현제 브레이크 값"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newDevicesList" />
+
+    <TextView
+        android:id="@+id/tvAcell"
+        android:layout_width="98dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="80dp"
+        android:text="현제 엑셀 값"
+        app:layout_constraintStart_toEndOf="@+id/tvBreak"
+        tools:layout_editor_absoluteY="564dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tvRatitud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="경도를 표시합니다 :"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="643dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tvLongitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="위도를 표시합니다:"
+        tools:layout_editor_absoluteX="211dp"
+        tools:layout_editor_absoluteY="634dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
