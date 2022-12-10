@@ -103,3 +103,15 @@ public class GpsTracker extends Service implements LocationListener {
         {
             latitude = location.getLatitude();
         }
+
+        return latitude;
+    }
+    public double getLongitude() // 경도
+    {
+        if(location != null)
+        {
+            longitude = location.getLongitude();
+        }
+
+        return longitude;
+    }
