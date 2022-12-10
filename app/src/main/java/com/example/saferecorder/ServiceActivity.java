@@ -75,3 +75,11 @@ public class ServiceActivity extends AppCompatActivity {
     final static int BT_MESSAGE_READ = 2;
     final static int BT_CONNECTING_STATUS = 3;
 
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_service);
+
+        if (checkLocationServicesStatus()) {
+            checkRunTimePermission();
