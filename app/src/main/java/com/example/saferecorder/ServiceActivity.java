@@ -243,3 +243,10 @@ public class ServiceActivity extends AppCompatActivity {
     }
 
     public void blueToothOff() {
+        if (!mBluetoothAdapter.isEnabled()) {
+            Toast.makeText(getApplicationContext(), "Already OFF", Toast.LENGTH_SHORT).show();
+        } else if (mBluetoothAdapter.isEnabled()) {
+            //Toast.makeText(getApplicationContext(), "Bluetooth Off",Toast.LENGTH_SHORT).show();
+            mBluetoothAdapter.disable();
+        }
+    }
