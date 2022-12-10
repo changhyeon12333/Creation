@@ -115,3 +115,14 @@ public class GpsTracker extends Service implements LocationListener {
 
         return longitude;
     }
+
+    public void stopUsingGPS()
+    {
+        if(locationManager != null)
+        {
+            locationManager.removeUpdates(GpsTracker.this);
+        }
+    }
+
+
+}
