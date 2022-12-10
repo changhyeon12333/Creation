@@ -227,3 +227,10 @@ public class ServiceActivity extends AppCompatActivity {
         if (mBluetoothAdapter == null) {
             Toast.makeText(getApplicationContext(), "This device doesn't support bluetooth service", Toast.LENGTH_SHORT).show();
             tvBluetoothStatus.setText("NonActive");
+        } else if (mBluetoothAdapter.isEnabled()) {
+            Toast.makeText(getApplicationContext(), "Already On", Toast.LENGTH_SHORT).show();
+        } else {
+            //Toast.makeText(getApplicationContext(), "Bluetooth On",Toast.LENGTH_SHORT).show();
+            //Ask user
+            Intent intentBluetoothEnable = new Intent(mBluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(intentBluetoothEnable, BT_REQUEST_ENABLE);//BT_REQUEST_ENABLE : ModeId
