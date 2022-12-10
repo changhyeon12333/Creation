@@ -67,7 +67,7 @@ public class PrivacyFragment extends Fragment {
                         .show();
 
             }
-        });
+        }));
         return inflater.inflate(R.layout.fragment_privacy, container, false);
         return v;
     }
