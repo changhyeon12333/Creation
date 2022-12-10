@@ -21,9 +21,9 @@
             android:id="@+id/count_check_btn"
             android:layout_width="290"
             android:layout_height="45dp"
+            android:layout_gravity="center"
             android:layout_marginBottom="100dp"
             android:src="@drawable/count_check_btn"
-            android:layout_gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
