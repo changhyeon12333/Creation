@@ -123,7 +123,7 @@ public class ServiceActivity extends AppCompatActivity {
             }
         });
 
-        btnFindDiscover.setOnClickListener(new View.OnClickListener(){
+        btnFindDiscover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 bluetoothDiscover();
@@ -147,14 +147,13 @@ public class ServiceActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    private void checkBTPermissions(){
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
+    private void checkBTPermissions() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
             int permissionCheck = this.checkSelfPermission("Manifest.permission.ACCESS_FINE_LOCATION");
             permissionCheck += this.checkSelfPermission("Manifest.permission.ACCESS_FINE_LOCATION");
-            if(permissionCheck!=0){
-                this.requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},1001);
-            }
-            else{
+            if (permissionCheck != 0) {
+                this.requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1001);
+            } else {
                 Log.d("checkPermission", "No need to check permissions. SDK version < LoLLIPOP");
             }
         }
@@ -203,19 +202,19 @@ public class ServiceActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Connecting...", Toast.LENGTH_SHORT).show();
                         break;
                     case BluetoothAdapter.STATE_CONNECTED:
-                        Toast.makeText(getApplicationContext(), "Connected.",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Connected.", Toast.LENGTH_SHORT).show();
                         break;
 
                 }
             }//end else if
 
-            else if(action.equals(BluetoothDevice.ACTION_FOUND)){
+            else if (action.equals(BluetoothDevice.ACTION_FOUND)) {
                 //get devices
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 mBTdevices.add(device);
-                Toast.makeText(getApplicationContext(), device.getName()+" : "+device.getAddress(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), device.getName() + " : " + device.getAddress(), Toast.LENGTH_SHORT).show();
                 //attach device to adapter & set list
-                mDeviceListAdapter = new DeviceListAdapter(context,R.layout.device_adapter_view, mBTdevices);
+                mDeviceListAdapter = new DeviceListAdapter(context, R.layout.device_adapter_view, mBTdevices);
                 newDevicesList.setAdapter(mDeviceListAdapter);
             }//end else if
 
@@ -251,20 +250,20 @@ public class ServiceActivity extends AppCompatActivity {
         }
     }
 
-    public void bluetoothDiscovery(){
-        Toast.makeText(getApplicationContext(), "Making device discoverable for 300 seconds.",Toast.LENGTH_SHORT).show();
+    public void bluetoothDiscovery() {
+        Toast.makeText(getApplicationContext(), "Making device discoverable for 300 seconds.", Toast.LENGTH_SHORT).show();
 
         Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION,300);
+        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
         startActivity(discoverableIntent);
 
         //get scanmode change
         IntentFilter intentFilter = new IntentFilter(mBluetoothAdapter.ACTION_SCAN_MODE_CHANGED);
-        registerReceiver(mBroadCastReceiver,intentFilter);
+        registerReceiver(mBroadCastReceiver, intentFilter);
     }
 
-    public void bluetoothDiscover(){
-        if(mBluetoothAdapter.isDiscovering()){ //already discovering > cancel
+    public void bluetoothDiscover() {
+        if (mBluetoothAdapter.isDiscovering()) { //already discovering > cancel
             mBluetoothAdapter.cancelDiscovery();
             Toast.makeText(getApplicationContext(), "Canceling discovery", Toast.LENGTH_SHORT).show();
 
@@ -272,16 +271,14 @@ public class ServiceActivity extends AppCompatActivity {
 
             mBluetoothAdapter.startDiscovery();
             IntentFilter discoverDevicesIntent = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-            registerReceiver(mBroadCastReceiver,discoverDevicesIntent);
-        }
-
-        else if(!mBluetoothAdapter.isDiscovering()){
+            registerReceiver(mBroadCastReceiver, discoverDevicesIntent);
+        } else if (!mBluetoothAdapter.isDiscovering()) {
             checkBTPermissions();
             Toast.makeText(getApplicationContext(), "Starting discovery", Toast.LENGTH_SHORT).show();
 
             mBluetoothAdapter.startDiscovery();
             IntentFilter discoverDevicesIntent = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-            registerReceiver(mBroadCastReceiver,discoverDevicesIntent);
+            registerReceiver(mBroadCastReceiver, discoverDevicesIntent);
         }
     }
 
@@ -348,6 +345,7 @@ public class ServiceActivity extends AppCompatActivity {
         }
 
     }
+
     private void showDialogForLocationServiceSetting() {
         AlertDialog.Builder builder = new AlertDialog.Builder(ServiceActivity.this);
         builder.setTitle("위치 서비스 비활성화");
@@ -394,3 +392,4 @@ public class ServiceActivity extends AppCompatActivity {
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
+}
