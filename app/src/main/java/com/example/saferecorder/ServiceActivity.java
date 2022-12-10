@@ -154,3 +154,13 @@ public class ServiceActivity extends AppCompatActivity {
             if(permissionCheck!=0){
                 this.requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},1001);
             }
+            else{
+                Log.d("checkPermission", "No need to check permissions. SDK version < LoLLIPOP");
+            }
+        }
+    }
+
+    // Create a BroadcastReceiver
+    private final BroadcastReceiver mBroadCastReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
