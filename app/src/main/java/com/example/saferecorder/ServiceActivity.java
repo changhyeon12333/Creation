@@ -185,3 +185,11 @@ public class ServiceActivity extends AppCompatActivity {
                         break;
                 }
             }//end if
+
+            else if (action.equals(mBluetoothAdapter.ACTION_SCAN_MODE_CHANGED)) {
+                final int mode = intent.getIntExtra(BluetoothAdapter.EXTRA_SCAN_MODE, BluetoothAdapter.ERROR);
+
+                switch (mode) {
+                    case BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE:
+                        Toast.makeText(getApplicationContext(), "Discoverability enabled", Toast.LENGTH_SHORT).show();
+                        break;
