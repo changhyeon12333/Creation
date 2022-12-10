@@ -142,3 +142,15 @@ public class ServiceActivity extends AppCompatActivity {
                 Toast.makeText(ServiceActivity.this, "현재위치 \n위도 " + latitude + "\n경도 " + longitude, Toast.LENGTH_LONG).show();
             }
         });
+
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void checkBTPermissions(){
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
+            int permissionCheck = this.checkSelfPermission("Manifest.permission.ACCESS_FINE_LOCATION");
+            permissionCheck += this.checkSelfPermission("Manifest.permission.ACCESS_FINE_LOCATION");
+            if(permissionCheck!=0){
+                this.requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},1001);
+            }
