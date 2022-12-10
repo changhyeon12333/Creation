@@ -218,3 +218,12 @@ public class ServiceActivity extends AppCompatActivity {
                 mDeviceListAdapter = new DeviceListAdapter(context,R.layout.device_adapter_view, mBTdevices);
                 newDevicesList.setAdapter(mDeviceListAdapter);
             }//end else if
+
+        }//end onReceive
+    };
+
+
+    public void blueToothOn() {
+        if (mBluetoothAdapter == null) {
+            Toast.makeText(getApplicationContext(), "This device doesn't support bluetooth service", Toast.LENGTH_SHORT).show();
+            tvBluetoothStatus.setText("NonActive");
