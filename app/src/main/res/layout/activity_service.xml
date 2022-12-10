@@ -94,11 +94,23 @@
         android:text="디바이스 찾기"
         app:layout_constraintStart_toEndOf="@+id/btnDiscover"
         app:layout_constraintTop_toTopOf="@+id/btnDiscover" />
+
     <ListView
         android:id="@+id/newDevicesList"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="@+id/btnDiscover"
         app:layout_constraintTop_toBottomOf="@+id/btnDiscover" />
+
+    <TextView
+        android:id="@+id/tvbreak"
+        android:layout_width="106dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="28dp"
+        android:text="현제 브레이크 값"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newDevicesList" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
