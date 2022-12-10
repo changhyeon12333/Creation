@@ -127,7 +127,7 @@ public class ServiceActivity extends AppCompatActivity {
             }
         });
 
-        btnFindDiscover.setOnClickListener(new View.OnClickListener() {
+        btnFindDiscover.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 bluetoothDiscover();
@@ -151,13 +151,14 @@ public class ServiceActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    private void checkBTPermissions() {
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+    private void checkBTPermissions(){
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
             int permissionCheck = this.checkSelfPermission("Manifest.permission.ACCESS_FINE_LOCATION");
             permissionCheck += this.checkSelfPermission("Manifest.permission.ACCESS_FINE_LOCATION");
-            if (permissionCheck != 0) {
-                this.requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1001);
-            } else {
+            if(permissionCheck!=0){
+                this.requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},1001);
+            }
+            else{
                 Log.d("checkPermission", "No need to check permissions. SDK version < LoLLIPOP");
             }
         }
@@ -206,39 +207,19 @@ public class ServiceActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Connecting...", Toast.LENGTH_SHORT).show();
                         break;
                     case BluetoothAdapter.STATE_CONNECTED:
-                        Toast.makeText(getApplicationContext(), "Connected.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Connected.",Toast.LENGTH_SHORT).show();
                         break;
 
                 }
             }//end else if
 
-            else if (action.equals(BluetoothDevice.ACTION_FOUND)) {
+            else if(action.equals(BluetoothDevice.ACTION_FOUND)){
                 //get devices
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 mBTdevices.add(device);
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    return;
-                }
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    return;
-                }
-                Toast.makeText(getApplicationContext(), device.getName() + " : " + device.getAddress(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), device.getName()+" : "+device.getAddress(), Toast.LENGTH_SHORT).show();
                 //attach device to adapter & set list
-                mDeviceListAdapter = new DeviceListAdapter(context, R.layout.activity_service, mBTdevices);
+                mDeviceListAdapter = new DeviceListAdapter(context,R.layout.device_adapter_view, mBTdevices);
                 newDevicesList.setAdapter(mDeviceListAdapter);
             }//end else if
 
@@ -270,54 +251,24 @@ public class ServiceActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Already OFF", Toast.LENGTH_SHORT).show();
         } else if (mBluetoothAdapter.isEnabled()) {
             //Toast.makeText(getApplicationContext(), "Bluetooth Off",Toast.LENGTH_SHORT).show();
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return;
-            }
             mBluetoothAdapter.disable();
         }
     }
 
-    public void bluetoothDiscovery() {
-        Toast.makeText(getApplicationContext(), "Making device discoverable for 300 seconds.", Toast.LENGTH_SHORT).show();
+    public void bluetoothDiscovery(){
+        Toast.makeText(getApplicationContext(), "Making device discoverable for 300 seconds.",Toast.LENGTH_SHORT).show();
 
         Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_ADVERTISE) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
+        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION,300);
         startActivity(discoverableIntent);
 
         //get scanmode change
         IntentFilter intentFilter = new IntentFilter(mBluetoothAdapter.ACTION_SCAN_MODE_CHANGED);
-        registerReceiver(mBroadCastReceiver, intentFilter);
+        registerReceiver(mBroadCastReceiver,intentFilter);
     }
 
-    public void bluetoothDiscover() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        if (mBluetoothAdapter.isDiscovering()) { //already discovering > cancel
+    public void bluetoothDiscover(){
+        if(mBluetoothAdapter.isDiscovering()){ //already discovering > cancel
             mBluetoothAdapter.cancelDiscovery();
             Toast.makeText(getApplicationContext(), "Canceling discovery", Toast.LENGTH_SHORT).show();
 
@@ -325,14 +276,16 @@ public class ServiceActivity extends AppCompatActivity {
 
             mBluetoothAdapter.startDiscovery();
             IntentFilter discoverDevicesIntent = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-            registerReceiver(mBroadCastReceiver, discoverDevicesIntent);
-        } else if (!mBluetoothAdapter.isDiscovering()) {
+            registerReceiver(mBroadCastReceiver,discoverDevicesIntent);
+        }
+
+        else if(!mBluetoothAdapter.isDiscovering()){
             checkBTPermissions();
             Toast.makeText(getApplicationContext(), "Starting discovery", Toast.LENGTH_SHORT).show();
 
             mBluetoothAdapter.startDiscovery();
             IntentFilter discoverDevicesIntent = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-            registerReceiver(mBroadCastReceiver, discoverDevicesIntent);
+            registerReceiver(mBroadCastReceiver,discoverDevicesIntent);
         }
     }
 

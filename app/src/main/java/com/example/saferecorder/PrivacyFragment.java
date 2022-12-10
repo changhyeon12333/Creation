@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.EditText;
+
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -37,11 +38,11 @@ public class PrivacyFragment extends Fragment {
             public void onClick(View v) {
 
                 final EditText etDBName = new EditText(PrivacyFragment.this);
-                etDBName.setHint("DB명을 입력하세요");
+                etDBName.setHint("개인정보를 입력하세요");
 
                 AlertDialog.Builder dialog = new AlertDialog.Builder(PrivacyFragment.this);
-                dialog.setTitle("Database 이름을 ")
-                        .setMessage(("Database 이름을 입력하세요"))
+                dialog.setTitle("이름을 ")
+                        .setMessage(("이름을 입력하세요"))
                         .setView(etDBName)
                         .setPositiveButton("생성", new DialogInterface.OnClickListener() {
                             @Override
